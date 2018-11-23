@@ -1,0 +1,27 @@
+<div class="section-client">
+	<div class="client-cards {{section.direction}}">
+		<div class="client-cards-wrapper">
+			<div class="client-card current-{{client.position.current}} last-{{client.position.last}}"
+				ng-repeat="client in section.clients">
+				<h3>#{{$index + 1}} {{client.name}}</h3>
+				<p class="position">{{client.job}}</p>
+				<p class="description">{{client.description}}</p>
+			</div>
+		</div>
+	</div>
+	<div class="client-images {{section.direction}}">
+		<div class="client-images-wrapper">
+			<div class="client-image-current-{{client.position.current}} client-image-last-{{client.position.last}}"
+				ng-repeat="client in section.clients">
+				<div class="client-image"><img ng-src="{{client.avatarUrl}}"></div>
+				<div class="client-image clone"><img ng-src="{{client.avatarUrl}}"></div>
+			</div>
+		</div>
+		<div class="client-images-control-previous">
+			<i class="fa fa-angle-left" ng-click="section.previous()"></i>
+		</div>
+		<div class="client-images-control-next">
+			<i class="fa fa-angle-right" ng-click="section.next()"></i>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,45 @@
+<div class="section-features">
+	<h2>Special Features</h2>
+	<p>Lorem ipsum madolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor coli incididunt ut labore Lorem ipsum madolor sit amet.</p>
+	
+	<div class="sub-sections">
+		<div class="sub-section left">
+			<div class="feature"
+				ng-repeat="feature in section.leftFeatures"
+				ng-mouseenter="section.setCurrentFeature(feature)"
+				ng-class="{'current': feature === section.currentFeature}">
+				<div class="icon"><i class="fa fa-{{feature.icon}}"></i></div>
+				<div class="content">
+					<h4>{{feature.title}}</h4>
+					<p>{{feature.description}}</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="sub-section phone">
+			<img ng-src="assets/images/mobile2.png">
+
+			<div class="features-image">
+				<img ng-repeat="feature in section.features"
+					ng-src="assets/images/feature/{{feature.id}}.jpg"
+					ng-class="{
+						'current': feature === section.currentFeature,
+						'last': feature === section.lastFeature,
+					}">
+			</div>
+		</div>
+
+		<div class="sub-section right">
+			<div class="feature"
+				ng-repeat="feature in section.rightFeatures"
+				ng-mouseenter="section.setCurrentFeature(feature)"
+				ng-class="{'current': feature === section.currentFeature}">
+				<div class="icon"><i class="fa fa-{{feature.icon}}"></i></div>
+				<div class="content">
+					<h4>{{feature.title}}</h4>
+					<p>{{feature.description}}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

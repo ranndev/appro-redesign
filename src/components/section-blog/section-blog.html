@@ -1,0 +1,23 @@
+<div class="section-blog">
+	<h2>Affordable Price</h2>
+	<p>Lorem ipsum madolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor coli incididunt ut labore Lorem ipsum madolor sit amet.</p>
+
+	<div class="blogs">
+		<div class="blog" ng-repeat="blog in section.blogs">
+			<img class="blog-preview" ng-src="{{blog.imageUrl}}">
+			<div class="blog-info">
+				<span><i class="fa fa-user"></i> By: {{blog.author}}</span>
+				<span><i class="fa fa-calendar"></i> {{blog.datePublished | date}}</span>
+			</div>
+			<h2 class="blog-title">{{blog.title}}</h2>
+			<p class="blog-description">{{blog.description}}</p>
+			<div class="blog-read-more">
+				<button>Read more</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="view-all">
+		<button>View All</button>
+	</div>
+</div>

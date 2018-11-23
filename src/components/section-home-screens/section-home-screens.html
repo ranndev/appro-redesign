@@ -1,0 +1,46 @@
+<div class="section-home-screens">
+	
+	<!-- Screen content -->
+	<div class="screen-details-container">
+		<div class="screen-details-wrapper">
+			<div class="screen-details {{home.screenDirection}}"">
+				<div class="screen-detail"
+					ng-repeat="screen in home.screens"
+					ng-class="{'last': screen.id === home.lastScreen.id, 'current': screen.id === home.currentScreen.id}">
+					<h3>{{$index}} {{screen.title}}</h3>
+					<p>{{screen.description}}</p>
+				</div>
+			</div>
+
+			<div class="screen-controls">
+				<button ng-click="home.screenPrev()">
+					<i class="fa fa-angle-left"></i>
+				</button>
+				<button ng-click="home.autoNextStart()"
+					ng-if="!home.autoNextInterval">
+					<i class="fa fa-play"></i>
+				</button>
+				<button ng-click="home.autoNextPause()"
+					ng-if="home.autoNextInterval">
+					<i class="fa fa-pause"></i>
+				</button>
+				<button ng-click="home.screenNext()">
+					<i class="fa fa-angle-right"></i>
+				</button>	
+			</div>
+		</div>
+	</div>
+
+	<!-- Screen preview -->
+	<div class="screen-preview-container">
+		<div class="screen-previews {{home.screenDirection}}">
+			<div class="screen-preview"
+				ng-repeat="screen in home.screens"
+				ng-class="{'last': screen.id === home.lastScreen.id, 'current': screen.id === home.currentScreen.id}"
+				style="background-image: url(assets/images/screen/screen{{screen.id}}.jpg)">
+			</div>
+		</div>
+		<img class="screen-preview-case" ng-src="assets/images/screen/phone.png">
+	</div>
+
+</div>

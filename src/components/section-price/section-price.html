@@ -1,0 +1,33 @@
+<div class="section-price">
+	<h2>Affordable Price</h2>
+	<p>Lorem ipsum madolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor coli incididunt ut labore Lorem ipsum madolor sit amet.</p>
+
+	<div class="prices">
+		<div class="price"
+			ng-repeat="price in section.prices"
+			ng-class="{'active': section.activePrice === price}"
+			ng-mouseenter="section.activePrice = price"
+			ng-mouseleave="section.activePrice = section.prices[1]">
+
+			<div class="price-header">
+				<h2>{{price.name}}</h2>
+			</div>
+
+			<div class="price-body">
+				<div class="feature-price">
+					<strong>$</strong>
+					<h4>{{price.price}}</h4>
+					<span>/ month</span>
+				</div>
+				<div class="feature" ng-repeat="feature in price.features">{{feature}}</div>
+			</div>
+
+			<div class="price-footer">
+				<button>Purchase</button>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<div class="background" style="background-image: url('assets/images/bg2.jpg')"></div>

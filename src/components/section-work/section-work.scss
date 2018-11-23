@@ -1,0 +1,74 @@
+section-work {
+	@extend %section-container-component;
+	background-color: $off-white;
+
+	.section-work {
+		@extend %section-container-component-wrapper;
+		flex-direction: column;
+		padding-top: 4rem;
+
+		> h2 {
+			font-size: 28px;
+			font-family: map-get($fonts-poppins, 'medium');
+			text-align: center;
+			text-transform: uppercase;
+		}
+
+		> p {
+			text-align: center;
+			margin-bottom: 3rem;
+		}
+	}
+
+	.cards {
+		flex-direction: row;
+		flex-wrap: wrap;
+		display: flex;
+		margin: 0 -1rem 2rem;
+
+		.card {
+			width: 25%;
+			padding: 0 1rem;
+		}
+
+		.card-wrapper {
+			padding: 1.25rem;
+			border-radius: .25rem;
+			text-align: center;
+			box-shadow:
+				0 0 0 rgba($black, .2),
+				inset 0 0 0 0 rgba($black, .2);
+			transition:
+				transform .2s ease,
+				box-shadow .2s linear;
+
+			&:hover {
+				transform: translateY(-.5rem);
+				box-shadow:
+					0 .2rem .25rem rgba($black, .2),
+					inset 0 0 0 1px rgba($black, .05);
+			}
+		}
+
+		img {
+			margin-bottom: 1.5rem;
+		}
+
+		h4 {
+			font-family: map-get($fonts-poppins, 'semibold');
+			text-transform: uppercase;
+		}
+	}
+
+	.phone-container {
+		position: relative;
+		z-index: 9;
+		text-align: center;
+
+		img {
+			width: 60%;
+			height: auto;
+			margin-bottom: -15%;
+		}
+	}
+}

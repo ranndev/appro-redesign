@@ -1,0 +1,13 @@
+$fa-font-path: './assets/fonts';
+
+@import "css-reset-and-normalize/scss/reset-and-normalize";
+@import "font-awesome/scss/font-awesome";
+
+@import "./styles/variables";
+@import "./styles/fonts";
+@import "./styles/animations";
+@import "./styles/extends";
+@import "./styles/mixins";
+@import "./styles/base";
+
+@import "./components/_index";

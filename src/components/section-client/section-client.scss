@@ -1,0 +1,136 @@
+section-client {
+	@extend %section-container-component;
+
+	.section-client {
+		@extend %section-container-component-wrapper;
+		flex-direction: column;
+		padding: 4rem 0;
+	}
+
+	.client-cards {
+		padding: 2rem;
+		margin-bottom: 3rem;
+		border-radius: .25rem;
+		box-shadow: 0 1px 1px 1px rgba($black, .2);
+
+		&.previous .client-card {
+			&.current-2 { animation: client-card-slide-from-left .3s ease 1 forwards }
+			&.last-2 { animation: client-card-slide-to-right .3s ease 1 forwards }
+		}
+
+		&.next .client-card {
+			&.current-2 { animation: client-card-slide-from-right .3s ease 1 forwards }
+			&.last-2 { animation: client-card-slide-to-left .3s ease 1 forwards }
+		}
+	}
+
+	.client-cards-wrapper {
+		flex-wrap: nowrap;
+		display: flex;
+		overflow: hidden;
+	}
+
+	.client-card {
+		position: relative;
+		flex: none;
+		width: 100%;
+		text-align: center;
+		transform: translateX(100%);
+
+		@for $i from 1 through 3 {
+			&:nth-child(#{$i}) {
+				right: 100% * ($i - 1);
+			}
+		}
+	}
+
+	.client-images {
+		position: relative;
+
+		&.previous .client-image {
+			
+		}
+
+		&.next .client-image {
+
+		}
+	}
+
+	.client-images-wrapper {
+		position: relative;
+		height: 97px;
+	}
+
+	.client-image {
+		position: absolute;
+		left: 0;
+		top: 0;
+		display: flex;
+		justify-content: center;
+		width: calc(100% / 5);
+		transition: transform 1s ease;
+	}
+
+	@for $i from 1 through 3 {
+		.client-image-current-#{$i} .client-image {
+			transform: translateX(100% * $i);
+		}
+	}
+
+	.client-images-control-previous,
+	.client-images-control-next {
+		position: absolute;
+		bottom: 0;
+		top: 0;
+		display: flex;
+		align-items: center;
+
+		i {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+			box-shadow: 0 1px 1px 1px rgba($black, .2);
+		}
+	}
+
+	.client-images-control-previous {
+		left: 0;
+	}
+
+	.client-images-control-next {
+		right: 0;
+	}
+}
+
+@keyframes client-image-slide-to-left {
+	from { transform: translateX(0) }
+	to { transform: translateX(-100%) }
+}
+
+@keyframes client-card-slide-from-left {
+	from { transform: translateX(-100%) }
+	to { transform: translateX(0) }
+}
+
+@keyframes client-card-slide-from-right {
+	from { transform: translateX(100%) }
+	to { transform: translateX(0) }
+}
+
+@keyframes client-card-slide-to-left {
+	from { transform: translateX(0) }
+	to { transform: translateX(-100%) }
+}
+
+@keyframes client-card-slide-to-right {
+	from { transform: translateX(0) }
+	to { transform: translateX(100%) }
+}
+
+@keyframes client-image-slide-to-left {
+	from { transform: translateX(0) }
+	to { transform: translateX(-20%) }
+}
