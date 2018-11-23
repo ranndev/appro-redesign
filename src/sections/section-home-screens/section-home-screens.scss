@@ -1,187 +1,198 @@
 section-home-screens {
-	@extend %section-container-component;
-	padding-bottom: 4rem;
-	padding-top: 6rem;
-	position: relative;
-	background-image: $gradient-mint;
-	user-select: none;
+  @extend %section-container-component;
+  padding-bottom: 4rem;
+  padding-top: 6rem;
+  position: relative;
+  background-image: $gradient-mint;
+  overflow: hidden;
+  user-select: none;
 
-	&::after {
-		content: "";
-		position: absolute;
-		z-index: 1;
-		bottom: 0;
-		top: 0;
-		left: 0;
-		right: 0;
-		display: flex;
-		opacity: .2;
-		pointer-events: none;
-		background-image: url('assets/images/header-dew.png');
-		background-position: center bottom;
-		background-size: 100%;
-		background-repeat: no-repeat;
-	}
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    opacity: .2;
+    pointer-events: none;
+    background-image: url('assets/images/header-dew.png');
+    background-position: center bottom;
+    background-size: 100%;
+    background-repeat: no-repeat;
+  }
 
-	.section-home-screens {
-		@extend %section-container-component-wrapper;
-		position: relative;
-		z-index: 2;
-	}
+  .section-home-screens {
+    @extend %section-container-component-wrapper;
+    position: relative;
+    z-index: 2;
+  }
 
-	.screen-details-container {
-		position: relative;
-		flex-direction: row;
-		flex: auto;
-		display: flex;
-		width: 100%;
-	}
+  .screen-details-container {
+    position: relative;
+    flex-direction: row;
+    flex: auto;
+    display: flex;
+    width: 100%;
+    height: 450px;
 
-	.screen-details-wrapper {
-		position: absolute;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		top: 0;
-		flex-direction: column;
-		display: flex;
-	}
+    @include breakpoint-up('md') {
+      height: auto;
+    }
+  }
 
-	.screen-controls {
-		flex: none;
-		display: flex;
-		justify-content: space-between;
+  .screen-details-wrapper {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    flex-direction: column;
+    display: flex;
+  }
 
-		button {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			width: 50px;
-			height: 50px;
-			border: none;
-			outline: none;
-			font-size: 30px;
-			background: none;
-			cursor: pointer;
-			color: rgba($white, .5);
-			&:hover { color: $white  }
-		}
-	}
+  .screen-controls {
+    flex: none;
+    display: flex;
+    justify-content: space-between;
 
-	.screen-details {
-		position: relative;
-		flex: auto;
-		margin-bottom: 2rem;
-		overflow: hidden;
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border: none;
+      outline: none;
+      font-size: 30px;
+      background: none;
+      cursor: pointer;
+      color: rgba($white, .5);
+      &:hover { color: $white  }
+    }
+  }
 
-		&.prev {
-			.screen-detail.last { animation: screen-out-to-right .3s ease-in-out 1 forwards; }
-			.screen-detail.current { animation: screen-in-from-left .3s ease-in-out 1 forwards; }
-		}
+  .screen-details {
+    position: relative;
+    flex: auto;
+    margin-bottom: 2rem;
+    overflow: hidden;
 
-		&.next {
-			.screen-detail.last { animation: screen-out-to-left .3s ease-in-out 1 forwards; }
-			.screen-detail.current { animation: screen-in-from-right .3s ease-in-out 1 forwards; }
-		}
-	}
+    &.prev {
+      .screen-detail.last { animation: screen-out-to-right .3s ease-in-out 1 forwards; }
+      .screen-detail.current { animation: screen-in-from-left .3s ease-in-out 1 forwards; }
+    }
 
-	.screen-detail {
-		position: absolute;
-		z-index: 0;
-		bottom: 0;
-		top: 0;
-		flex-direction: column;
-		display: flex;
-		justify-content: center;
-		width: 100%;
-		opacity: 0;
+    &.next {
+      .screen-detail.last { animation: screen-out-to-left .3s ease-in-out 1 forwards; }
+      .screen-detail.current { animation: screen-in-from-right .3s ease-in-out 1 forwards; }
+    }
+  }
 
-		&.last, &.current { opacity: 1 }
+  .screen-detail {
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+    top: 0;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    opacity: 0;
 
-		h3 {
-			margin-bottom: 1rem;
-			font-size: 38px;
-			font-family: map-get($fonts-poppins, 'medium');
-			color: $white;
-			white-space: pre-wrap;
-		}
+    &.last, &.current { opacity: 1 }
 
-		p {
-			color: $white;
-			line-height: 1.3;
-		}
-	}
+    h3 {
+      margin-bottom: 1rem;
+      font-size: 38px;
+      font-family: map-get($fonts-poppins, 'medium');
+      color: $white;
+      white-space: pre-wrap;
+    }
 
-	.screen-preview-container {
-		position: relative;
-		flex: none;
-		align-self: flex-start;
-		margin-left: 3rem;
-		opacity: 0;
-		animation: entrance-from-right .3s .3s ease-out forwards;
-	}
+    p {
+      color: $white;
+      line-height: 1.3;
+    }
+  }
 
-	.screen-preview-case {
-		position: relative;
-		z-index: 2;
-	}
+  .screen-preview-container {
+    position: relative;
+    flex: none;
+    display: none;
+    align-self: flex-start;
+    margin-left: 3rem;
+    opacity: 0;
+    animation: entrance-from-right .3s .3s ease-out forwards;
 
-	.screen-previews {
-		position: absolute;
-		z-index: 1;
-		left: 10px;
-		right: 10px;
-		bottom: 54px;
-		top: 49px;
-		flex-direction: row;
-		flex-wrap: nowrap;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		overflow: hidden;
+    @include breakpoint-up('md') {
+      display: block;
+    }
+  }
 
-		&.prev {
-			.screen-preview.last { animation: screen-out-to-right .3s ease-in-out 1 forwards; }
-			.screen-preview.current { animation: screen-in-from-left .3s ease-in-out 1 forwards; }
-		}
+  .screen-preview-case {
+    position: relative;
+    z-index: 2;
+  }
 
-		&.next {
-			.screen-preview.last { animation: screen-out-to-left .3s ease-in-out 1 forwards; }
-			.screen-preview.current { animation: screen-in-from-right .3s ease-in-out 1 forwards; }
-		}
-	}
+  .screen-previews {
+    position: absolute;
+    z-index: 1;
+    left: 10px;
+    right: 10px;
+    bottom: 54px;
+    top: 49px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 
-	.screen-preview {
-		position: absolute;
-		z-index: 0;
-		left: 0;
-		right: 0;
-		top: 0;
-		bottom: 0;
-		background-size: 100% 100%;
-		background-repeat: no-repeat;
+    &.prev {
+      .screen-preview.last { animation: screen-out-to-right .3s ease-in-out 1 forwards; }
+      .screen-preview.current { animation: screen-in-from-left .3s ease-in-out 1 forwards; }
+    }
 
-		&.last { z-index: 2 }
-		&.current { z-index: 1 }
-	}
+    &.next {
+      .screen-preview.last { animation: screen-out-to-left .3s ease-in-out 1 forwards; }
+      .screen-preview.current { animation: screen-in-from-right .3s ease-in-out 1 forwards; }
+    }
+  }
+
+  .screen-preview {
+    position: absolute;
+    z-index: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+
+    &.last { z-index: 2 }
+    &.current { z-index: 1 }
+  }
 }
 
 @keyframes screen-out-to-left {
-	from { transform: translateX(0) }
-	to { transform: translateX(-100%) }
+  from { transform: translateX(0) }
+  to { transform: translateX(-100%) }
 }
 
 @keyframes screen-out-to-right {
-	from { transform: translateX(0) }
-	to { transform: translateX(100%) }
+  from { transform: translateX(0) }
+  to { transform: translateX(100%) }
 }
 
 @keyframes screen-in-from-left {
-	from { transform: translateX(-100%) }
-	to { transform: translateX(0) }	
+  from { transform: translateX(-100%) }
+  to { transform: translateX(0) } 
 }
 
 @keyframes screen-in-from-right {
-	from { transform: translateX(100%) }
-	to { transform: translateX(0) }	
+  from { transform: translateX(100%) }
+  to { transform: translateX(0) } 
 }
