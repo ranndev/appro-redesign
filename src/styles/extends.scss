@@ -1,0 +1,13 @@
+%section-container-component {
+	flex: auto;
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	padding: 0 1rem;
+}
+
+%section-container-component-wrapper {
+	display: flex;
+	width: 100%;
+	max-width: $section-wrapper-max-width;
+}

@@ -1,0 +1,37 @@
+section-faq {
+	@extend %section-container-component;
+
+	.section-faq {
+		@extend %section-container-component-wrapper;
+		flex-direction: column;
+		padding: 4rem;
+
+		> h2 {
+			font-size: 28px;
+			font-family: map-get($fonts-poppins, 'medium');
+			text-align: center;
+			text-transform: uppercase;
+		}
+
+		> p {
+			text-align: center;
+			margin-bottom: 3rem;
+		}
+	}
+
+	.section-faq-wrapper {
+		display: flex;
+		align-items: center;
+	}
+
+	.collapsables {
+		flex-direction: column;
+		display: flex;
+		margin-right: 3rem;
+
+		collapsable {
+			margin-bottom: 1rem;
+			&:last-child { margin-bottom: 0 }
+		}
+	}
+}

@@ -1,0 +1,145 @@
+$screenshots-quantity: 5;
+$screenshots-gutter: 0;
+$screenshots-phone-screen-padding-top: 48px;
+$screenshots-phone-screen-padding-bottom: 52px;
+$screenshots-phone-screen-width: 220px;
+$screenshots-inner-container-width: ($screenshots-gutter + $screenshots-phone-screen-width) * $screenshots-quantity - $screenshots-gutter;
+$screenshots-changing-speed: .6s;
+
+
+
+section-screenshots {
+	@extend %section-container-component;
+
+	.section-screenshots {
+		@extend %section-container-component-wrapper;
+		flex-direction: column;
+		padding: 4rem 0;
+
+		> h2 {
+			font-size: 28px;
+			font-family: map-get($fonts-poppins, 'medium');
+			text-align: center;
+			text-transform: uppercase;
+		}
+
+		> p {
+			text-align: center;
+			margin-bottom: 3rem;
+		}
+	}
+
+	.section-screenshots-component {
+		position: relative;
+		display: flex;
+	}
+
+	.screenshots-phone-case {
+		position: relative;
+		z-index: 2;
+		display: flex;
+		justify-content: center;
+		width: 100%;
+		pointer-events: none;
+	}
+
+	.screenshots-control,
+	.screenshots-outer-container {
+		@include absolute-cover;
+	}
+
+	.screenshots-control {
+		z-index: 3;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin: 0 2rem;
+
+		.control {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 40px;
+			height: 40px;
+			background-color: $mint;
+			color: $white;
+			border-radius: 50%;
+			opacity: .8;
+			box-shadow: 0 1px 1px 1px rgba($black, .2);
+			cursor: pointer;
+
+			&:hover { opacity: 1 }
+
+			i { font-size: 18px }
+		}
+	}
+
+	.screenshots-outer-container {
+		z-index: 1;
+
+		padding-top: $screenshots-phone-screen-padding-top;
+		padding-bottom: $screenshots-phone-screen-padding-bottom;
+		overflow: hidden;
+	}
+
+	.screenshots-inner-container {
+		position: relative;
+		left: 50%;
+		margin-left: - ($screenshots-inner-container-width / 2);
+		display: flex;
+		height: 100%;
+		width: $screenshots-inner-container-width;
+
+		&.previous .screenshot {
+			@for $i from 1 through $screenshots-quantity {
+				&.screenshot-current-#{$i} {
+					z-index: $i;
+				}
+			}	
+		}
+
+		&.next .screenshot {
+			@for $i from 1 through $screenshots-quantity {
+				&.screenshot-current-#{$screenshots-quantity - $i + 1} {
+					z-index: $i;
+				}
+			}	
+		}
+	}
+
+	.screenshot {
+		@include absolute-cover;
+
+		img {
+			position: absolute;
+			left: 0;
+			height: 100%;
+			width: $screenshots-phone-screen-width;
+			will-change: transform;
+			transition: transform $screenshots-changing-speed ease;
+		}
+
+		@for $i from 1 through $screenshots-quantity {
+			$position: ($i - 1) * ($screenshots-gutter + $screenshots-phone-screen-width);
+
+			&.screenshot-current-#{$i} img {
+				@if ($i == 3) {
+					transform: translateX($position) scale(1);
+				} @else {
+					transform: translateX($position) scale(.8);
+				}
+			}
+		}
+	}
+
+	.screenshot.screenshot-last-1.screenshot-current-#{$screenshots-quantity},
+	.screenshot.screenshot-current-1.screenshot-last-#{$screenshots-quantity} {
+		animation: screenshot-fade-out-in $screenshots-changing-speed 1 ease forwards;
+	}
+}
+
+@keyframes screenshot-fade-out-in {
+	0%, 5% { opacity: 1 }
+	50% { opacity: 0 }
+	95%, 100% { opacity: 1 }
+}

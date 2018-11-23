@@ -1,0 +1,28 @@
+<div class="section-screenshots">
+	<h2>App Screenshots</h2>
+	<p>Lorem ipsum madolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor coli incididunt ut labore Lorem ipsum madolor sit amet.</p>
+
+	<div class="section-screenshots-component">
+		<div class="screenshots-outer-container">
+			<div class="screenshots-inner-container {{section.direction}}">
+				<div class="screenshot screenshot-current-{{screenshot.position.current}} screenshot-last-{{screenshot.position.last}}"
+					ng-repeat="screenshot in section.screenshots">
+					<img ng-src="{{screenshot.url}}">
+				</div>
+			</div>
+		</div>
+
+		<div class="screenshots-phone-case">
+			<img ng-src="assets/images/screen/phone.png">
+		</div>
+
+		<div class="screenshots-control">
+			<div class="control" ng-click="section.previous()">
+				<i class="fa fa-angle-left"></i>
+			</div>
+			<div class="control" ng-click="section.next()">
+				<i class="fa fa-angle-right"></i>
+			</div>
+		</div>
+	</div>
+</div>

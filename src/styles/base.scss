@@ -1,0 +1,16 @@
+body {
+	font-family: map-get($fonts-poppins, 'regular');
+	font-size: $font-size-base;
+	line-height: 1.4;
+	color: rgba($black, .8);
+
+	&.not-loaded { overflow: hidden }
+
+	> .section-container {
+		flex-direction: column;
+		display: flex;
+		width: 100%;
+		padding: 0;
+		margin: 0;
+	}
+}

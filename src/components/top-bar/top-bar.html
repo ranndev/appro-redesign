@@ -1,0 +1,8 @@
+<nav>
+	<a class="brand" href="{{topBar.brandUrl}}">{{topBar.brandName}}</a>
+	<ul>
+		<li ng-repeat="location in topBar.locations">
+			<a href="{{location.hash}}">{{location.title}}</a>
+		</li>
+	</ul>
+</nav>
