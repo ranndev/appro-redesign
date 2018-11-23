@@ -19,8 +19,11 @@ top-bar {
   }
 
   &.float {
-    height: 3rem;
     box-shadow: 0 2px 2px rgba($black, .2);
+
+    @include breakpoint-up('md') {
+      height: 3rem;
+    }
   }
 
   nav {
@@ -29,6 +32,7 @@ top-bar {
     align-items: center;
     max-width: $section-wrapper-max-width;
     width: 100%;
+    overflow: hidden;
 
     @include breakpoint-up('md') {
       flex-direction: row;
