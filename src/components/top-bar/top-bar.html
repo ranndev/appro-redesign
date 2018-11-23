@@ -1,5 +1,10 @@
-<nav>
+<nav ng-class="{'collapsed': topBar.collapsed, 'expanded': !topBar.collapsed}">
 	<a class="brand" href="{{topBar.brandUrl}}">{{topBar.brandName}}</a>
+
+	<button class="toggler" ng-click="topBar.collapsed = !topBar.collapsed">
+		<i class="fa fa-bars"></i>
+	</button>
+
 	<ul>
 		<li ng-repeat="location in topBar.locations">
 			<a href="{{location.hash}}">{{location.title}}</a>

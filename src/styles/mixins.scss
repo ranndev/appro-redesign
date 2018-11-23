@@ -4,7 +4,7 @@
 }
 
 @mixin breakpoint-up($name) {
-  $min: breakpoint-min($name, $breakpoints);
+  $min: breakpoint-min($name);
   @if $min {
     @media (min-width: $min) {
       @content;
