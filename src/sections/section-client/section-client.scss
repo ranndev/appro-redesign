@@ -1,136 +1,155 @@
 section-client {
-	@extend %section-container-component;
+  @extend %section-container-component;
 
-	.section-client {
-		@extend %section-container-component-wrapper;
-		flex-direction: column;
-		padding: 4rem 0;
-	}
+  .section-client {
+    @extend %section-container-component-wrapper;
+    flex-direction: column;
+    max-width: 800px;
+    padding: 4rem 0;
 
-	.client-cards {
-		padding: 2rem;
-		margin-bottom: 3rem;
-		border-radius: .25rem;
-		box-shadow: 0 1px 1px 1px rgba($black, .2);
+    @include breakpoint-up('md') {
+      // padding: 2rem;
+    }
+  }
 
-		&.previous .client-card {
-			&.current-2 { animation: client-card-slide-from-left .3s ease 1 forwards }
-			&.last-2 { animation: client-card-slide-to-right .3s ease 1 forwards }
-		}
+  .client-cards {
+    margin-bottom: 3rem;
+    border-radius: .25rem;
+    box-shadow: 0 1px 1px 1px rgba($black, .2);
 
-		&.next .client-card {
-			&.current-2 { animation: client-card-slide-from-right .3s ease 1 forwards }
-			&.last-2 { animation: client-card-slide-to-left .3s ease 1 forwards }
-		}
-	}
+    &.previous .client-card {
+      &.current-2 { animation: client-card-slide-from-left .6s ease 1 forwards }
+      &.last-2 { animation: client-card-slide-to-right .6s ease 1 forwards }
+    }
 
-	.client-cards-wrapper {
-		flex-wrap: nowrap;
-		display: flex;
-		overflow: hidden;
-	}
+    &.next .client-card {
+      &.current-2 { animation: client-card-slide-from-right .6s ease 1 forwards }
+      &.last-2 { animation: client-card-slide-to-left .6s ease 1 forwards }
+    }
+  }
 
-	.client-card {
-		position: relative;
-		flex: none;
-		width: 100%;
-		text-align: center;
-		transform: translateX(100%);
+  .client-cards-wrapper {
+    flex-wrap: nowrap;
+    display: flex;
+    overflow: hidden;
+  }
 
-		@for $i from 1 through 3 {
-			&:nth-child(#{$i}) {
-				right: 100% * ($i - 1);
-			}
-		}
-	}
+  .client-card {
+    position: relative;
+    flex: none;
+    width: 100%;
+    padding: 1.5rem;
+    text-align: center;
+    transform: translateX(100%);
 
-	.client-images {
-		position: relative;
+    h3 {
+      font-family: map-get($fonts-poppins, 'medium');
+      font-size: 24px;
+      margin-bottom: .5rem;
+    }
 
-		&.previous .client-image {
-			
-		}
+    .position { margin-bottom: .5rem }
 
-		&.next .client-image {
+    @for $i from 1 through 3 {
+      &:nth-child(#{$i}) {
+        right: 100% * ($i - 1);
+      }
+    }
+  }
 
-		}
-	}
+  .client-images {
+    position: relative;
+  }
 
-	.client-images-wrapper {
-		position: relative;
-		height: 97px;
-	}
+  .client-images-wrapper {
+    position: relative;
+    height: 97px;
+  }
 
-	.client-image {
-		position: absolute;
-		left: 0;
-		top: 0;
-		display: flex;
-		justify-content: center;
-		width: calc(100% / 5);
-		transition: transform 1s ease;
-	}
+  .client-image {
+    position: absolute;
+    z-index: 0;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    width: calc(100% / 5);
+    will-change: transform;
+    transition: transform .6s ease, opacity .6s ease;
+    opacity: .2;
+  }
 
-	@for $i from 1 through 3 {
-		.client-image-current-#{$i} .client-image {
-			transform: translateX(100% * $i);
-		}
-	}
+  @for $i from 1 through 3 {
+    .client-image-current-#{$i} .client-image {
+      transform: translateX(100% * $i) scale(.8);
+    }
 
-	.client-images-control-previous,
-	.client-images-control-next {
-		position: absolute;
-		bottom: 0;
-		top: 0;
-		display: flex;
-		align-items: center;
+    .client-image-current-2 .client-image {
+      z-index: 1;
+      transform: translateX(100% * 2) scale(1);
+      opacity: 1;
+    }
+  }
 
-		i {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			width: 40px;
-			height: 40px;
-			border-radius: 50%;
-			box-shadow: 0 1px 1px 1px rgba($black, .2);
-		}
-	}
+  .client-images-control-previous,
+  .client-images-control-next {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
 
-	.client-images-control-previous {
-		left: 0;
-	}
+    i {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      font-size: 18px;
+      background-color: $white;
+      border-radius: 50%;
+      box-shadow: 0 1px 1px 1px rgba($black, .2);
+      opacity: .8;
+      cursor: pointer;
+      &:hover { opacity: 1 }
+    }
+  }
 
-	.client-images-control-next {
-		right: 0;
-	}
+  .client-images-control-previous {
+    left: 0;
+  }
+
+  .client-images-control-next {
+    right: 0;
+  }
 }
 
 @keyframes client-image-slide-to-left {
-	from { transform: translateX(0) }
-	to { transform: translateX(-100%) }
+  from { transform: translateX(0) }
+  to { transform: translateX(-100%) }
 }
 
 @keyframes client-card-slide-from-left {
-	from { transform: translateX(-100%) }
-	to { transform: translateX(0) }
+  from { transform: translateX(-100%) }
+  to { transform: translateX(0) }
 }
 
 @keyframes client-card-slide-from-right {
-	from { transform: translateX(100%) }
-	to { transform: translateX(0) }
+  from { transform: translateX(100%) }
+  to { transform: translateX(0) }
 }
 
 @keyframes client-card-slide-to-left {
-	from { transform: translateX(0) }
-	to { transform: translateX(-100%) }
+  from { transform: translateX(0) }
+  to { transform: translateX(-100%) }
 }
 
 @keyframes client-card-slide-to-right {
-	from { transform: translateX(0) }
-	to { transform: translateX(100%) }
+  from { transform: translateX(0) }
+  to { transform: translateX(100%) }
 }
 
 @keyframes client-image-slide-to-left {
-	from { transform: translateX(0) }
-	to { transform: translateX(-20%) }
+  from { transform: translateX(0) }
+  to { transform: translateX(-20%) }
 }
