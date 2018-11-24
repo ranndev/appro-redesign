@@ -1,7 +1,16 @@
+$section-wrapper-max-width: 1072px;
+
+// Colors
+
 $mint: #3ccdbb;
 $black: #3e3e3e;
 $white: #ffffff;
 $off-white: #f1f1f1;
+
+$gradient-mint: linear-gradient(to right, #1e5799 0%, $mint 0%, #16c9f6 100%);
+$gradient-purple: linear-gradient(to right, rgba(58, 123, 213, 0.8), rgba(0, 210, 255, 0.8));
+
+// Fonts
 
 $font-size-base: .85rem;
 $font-url-base: "assets/fonts" !default;
@@ -9,10 +18,15 @@ $font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helve
 $fonts-defined: "Poppins-Regular" "Poppins-Medium" "Poppins-SemiBold" "Poppins-Bold";
 $fonts-poppins: ();
 
-$gradient-mint: linear-gradient(to right, #1e5799 0%, $mint 0%, #16c9f6 100%);
-$gradient-purple: linear-gradient(to right, rgba(58, 123, 213, 0.8), rgba(0, 210, 255, 0.8));
+// Screenshots section
 
-$section-wrapper-max-width: 1072px;
+$screenshots-quantity: 5;
+$screenshots-gutter: 0;
+$screenshots-phone-screen-padding-top: 48px;
+$screenshots-phone-screen-padding-bottom: 52px;
+$screenshots-phone-screen-width: 220px;
+$screenshots-inner-container-width: ($screenshots-gutter + $screenshots-phone-screen-width) * $screenshots-quantity - $screenshots-gutter;
+$screenshots-changing-speed: .6s;
 
 // Breapoints
 

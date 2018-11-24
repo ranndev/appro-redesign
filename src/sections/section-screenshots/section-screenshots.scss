@@ -1,13 +1,3 @@
-$screenshots-quantity: 5;
-$screenshots-gutter: 0;
-$screenshots-phone-screen-padding-top: 48px;
-$screenshots-phone-screen-padding-bottom: 52px;
-$screenshots-phone-screen-width: 220px;
-$screenshots-inner-container-width: ($screenshots-gutter + $screenshots-phone-screen-width) * $screenshots-quantity - $screenshots-gutter;
-$screenshots-changing-speed: .6s;
-
-
-
 section-screenshots {
 	@extend %section-container-component;
 
@@ -15,18 +5,6 @@ section-screenshots {
 		@extend %section-container-component-wrapper;
 		flex-direction: column;
 		padding: 4rem 0;
-
-		> h2 {
-			font-size: 28px;
-			font-family: map-get($fonts-poppins, 'medium');
-			text-align: center;
-			text-transform: uppercase;
-		}
-
-		> p {
-			text-align: center;
-			margin-bottom: 3rem;
-		}
 	}
 
 	.section-screenshots-component {
