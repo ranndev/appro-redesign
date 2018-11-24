@@ -10,9 +10,11 @@ angular.module('app', [
 	'app.stores',
 	'app.components',
 	'app.sections',
-]).run((NavigationStore) => {
+]).run((NavigationStore, $timeout) => {
 	window.onload = () => {
-		document.querySelector('loader').classList.add('hidden');
-		document.body.classList.remove('not-loaded');
+    $timeout(() => {
+      document.querySelector('loader').classList.add('hidden');
+      document.body.classList.remove('not-loaded');
+    }, 3000);
 	};
 });
