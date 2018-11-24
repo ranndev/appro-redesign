@@ -1,101 +1,126 @@
 section-team {
-	@extend %section-container-component;
-	background-color: $off-white;
+  @extend %section-container-component;
+  background-color: $off-white;
 
-	.section-team {
-		@extend %section-container-component-wrapper;
-		flex-direction: column;
-		padding: 4rem 0;
+  .section-team {
+    @extend %section-container-component-wrapper;
+    flex-direction: column;
+    padding: 4rem 0;
 
-		> h2 {
-			font-size: 28px;
-			font-family: map-get($fonts-poppins, 'medium');
-			text-align: center;
-			text-transform: uppercase;
-		}
+    > h2 {
+      font-size: 28px;
+      font-family: map-get($fonts-poppins, 'medium');
+      text-align: center;
+      text-transform: uppercase;
+    }
 
-		> p {
-			text-align: center;
-			margin-bottom: 3rem;
-		}
-	}
+    > p {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+  }
 
-	.teams {
-		display: flex;
-		margin: 0 -.75rem;
-	}
+  .teams {
+    flex-direction: column;
+    display: flex;
+    margin: 0 -.75rem;
 
-	.team {
-		position: relative;
-		margin: 0 .75rem;
-		border-radius: .2rem;
-		overflow: hidden;
-		box-shadow: 0 1px .5rem rgba($black, .05);
+    @include breakpoint-up('sm') {
+      flex-wrap: wrap;
+      flex-direction: row;
+    }
 
-		&:hover {
-			img { transform: scale(1.1) }
-			.details { transform: translateY(0) }
-		}
+    @include breakpoint-up('md') {
+      flex-wrap: nowrap;
+    }
+  }
 
-		img {
-			width: 100%;
-			height: auto;
-			transform: scale(1);
-			will-change: transform;
-			transition: transform .3s ease;
-		}
+  .team {
+    position: relative;
+    margin: 0 .75rem 1.5rem;
+    border-radius: .2rem;
+    overflow: hidden;
+    box-shadow: 0 1px .5rem rgba($black, .05);
 
-		.details {
-			position: absolute;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			display: flex;
-			flex-direction: column;
-			background-color: $white;
-			transform: translateY(60px);
-			transition: transform .3s ease;
-		}
+    @include breakpoint-up('sm') {
+      width: calc(100% / 2 - 1.5rem);
 
-		.info {
-			padding: .75rem;
-			text-align: center;
+      &:nth-child(1n+3) {
+        margin-bottom: 0;
+      }
+    }
 
-			h4 {
-				font-family: map-get($fonts-poppins, 'medium');
-				text-transform: uppercase;
-			}
+    @include breakpoint-up('md') {
+      flex: 1;
+      margin-bottom: 0;
+    }
 
-			p { opacity: .8 }
-		}
+    &:last-child { margin-bottom: 0 }
 
-		.social-media {
-			flex-direction: row;
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-			height: 60px;
-			padding: 0 2rem;
-			border-top: 1px solid rgba($black, .2);
+    &:hover {
+      img { transform: scale(1.1) }
+      .details { transform: translateY(0) }
+    }
 
-			i {
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				width: 32px;
-				height: 32px;
-				border-radius: 50%;
-				background-color: $white;
-				color: $mint;
-				cursor: pointer;
-				transition: all .2s ease;
+    img {
+      width: 100%;
+      height: auto;
+      transform: scale(1);
+      will-change: transform;
+      transition: transform .3s ease;
+    }
 
-				&:hover {
-					background-color: $mint;
-					color: $white;
-					box-shadow: 0 1px 1px 1px rgba($black, .2);
-				}
-			}
-		}
-	}
+    .details {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      flex-direction: column;
+      background-color: $white;
+      transform: translateY(60px);
+      transition: transform .3s ease;
+    }
+
+    .info {
+      padding: .75rem;
+      text-align: center;
+
+      h4 {
+        font-family: map-get($fonts-poppins, 'medium');
+        text-transform: uppercase;
+      }
+
+      p { opacity: .8 }
+    }
+
+    .social-media {
+      flex-direction: row;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+      padding: 0 2rem;
+      border-top: 1px solid rgba($black, .2);
+
+      i {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background-color: $white;
+        color: $mint;
+        cursor: pointer;
+        transition: all .2s ease;
+
+        &:hover {
+          background-color: $mint;
+          color: $white;
+          box-shadow: 0 1px 1px 1px rgba($black, .2);
+        }
+      }
+    }
+  }
 }
