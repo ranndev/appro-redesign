@@ -1,3 +1,19 @@
+%section-title {
+  font-size: 28px;
+  font-family: map-get($fonts-poppins, 'medium');
+  text-align: center;
+  text-transform: uppercase;
+}
+
+%section-subtitle {
+  text-align: center;
+  margin-bottom: 3rem;
+
+  @include breakpoint-up('md') {
+    padding: 0 20%;
+  }
+}
+
 %section-container-component {
 	flex: auto;
 	display: flex;
@@ -10,4 +26,7 @@
 	display: flex;
 	width: 100%;
 	max-width: $section-wrapper-max-width;
+
+  > h2 { @extend %section-title }
+  > p { @extend %section-subtitle }
 }
