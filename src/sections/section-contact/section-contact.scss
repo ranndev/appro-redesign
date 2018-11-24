@@ -1,162 +1,190 @@
 section-contact {
-	@extend %section-container-component;
-	position: relative;
-	background-color: $black;
-	color: $white;
+  @extend %section-container-component;
+  position: relative;
+  background-color: $black;
+  color: $white;
 
-	.section-contact {
-		@extend %section-container-component-wrapper;
-		flex-direction: column;
-	}
+  .section-contact {
+    @extend %section-container-component-wrapper;
+    flex-direction: column;
+  }
 
-	.forms {
-		display: flex;
-		align-items: stretch;
-		margin: 0 -1rem;
-		transform: translateY(-5rem);
-	}
+  .forms {
+    flex-direction: column;
+    display: flex;
+    align-items: stretch;
+    margin: 0 -1rem;
+    transform: translateY(-5rem);
 
-	.form {
-		flex: 1;
-		flex-direction: column;
-		display: flex;
-		margin: 0 1rem;
-		padding: 3rem;
-		background-color: $white;
-		color: $black;
-		border-radius: .25rem;
-		text-align: center;
-		box-shadow: 0 1px .25rem 1px rgba($black, .2);
-		transition: .3s ease;
-		text-align: left;
+    @include breakpoint-up('md') {
+      flex-direction: row;
+    }
+  }
 
-		h4 {
-			margin-bottom: 1.5rem;
-			font-family: map-get($fonts-poppins, 'medium');
-			font-size: 18px;
-		}
-	}
+  .form {
+    flex: 1;
+    flex-direction: column;
+    display: flex;
+    margin: 0 1rem;
+    padding: 3rem;
+    background-color: $white;
+    color: $black;
+    border-radius: .25rem;
+    text-align: center;
+    box-shadow: 0 1px .25rem 1px rgba($black, .2);
+    transition: .3s ease;
+    text-align: left;
 
-	.form-message {
-		input, textarea {
-			flex: 1;
-			padding: .5rem;
-			border: 1px solid rgba($black, .2);
-			outline: none;
-			appearance: none;
-		}
+    h4 {
+      margin-bottom: 1.5rem;
+      font-family: map-get($fonts-poppins, 'medium');
+      font-size: 18px;
+    }
+  }
 
-		.form-group {
-			display: flex;
-			margin-bottom: 1.5rem;
-		}
+  .form-message {
+    margin-bottom: 2rem;
 
-		[type="email"] { margin-left: 1.5rem }
+    @include breakpoint-up('md') {
+      margin-bottom: 0;
+    }
 
-		button {
-			width: 150px;
-			padding: .5rem 1.25rem;
-			border: 1px solid $mint;
-			font-size: 15px;
-			background-color: $white;
-			color: $mint;
-			text-transform: uppercase;
-			cursor: pointer;
-			outline: none;
+    input, textarea {
+      width: 100%;
+      flex: 1;
+      padding: .5rem;
+      border: 1px solid rgba($black, .2);
+      outline: none;
+      appearance: none;
+    }
 
-			&:hover {
-				background-color: $mint;
-				color: $white;
-			}
-		}
-	}
+    .form-group {
+      display: flex;
+      margin-bottom: 1.5rem;
+    }
 
-	.form-address {
-		p { margin-bottom: 2rem }
+    [type="email"] { margin-left: 1.5rem }
 
-		.detail {
-			display: flex;
-			align-items: center;
-			margin-bottom: 1rem;
-		}
+    button {
+      width: 150px;
+      padding: .5rem 1.25rem;
+      border: 1px solid $mint;
+      font-size: 15px;
+      background-color: $white;
+      color: $mint;
+      text-transform: uppercase;
+      cursor: pointer;
+      outline: none;
 
-		i.fa {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			width: 40px;
-			height: 40px;
-			margin-right: .75rem;
-			font-size: 16px;
-			border-radius: 20px;
-			border: 1px solid $mint;
-			background-color: $white;
-			color: $mint;
-		}
-	}
+      &:hover {
+        background-color: $mint;
+        color: $white;
+      }
+    }
+  }
 
-	.newsletter {
-		flex-direction: column;
-		display: flex;
-		align-items: center;
-		margin-bottom: 4rem;
+  .form-address {
+    p { margin-bottom: 2rem }
 
-		h3 {
-			margin-bottom: 1rem;
-			font-family: map-get($fonts-poppins, 'medium');
-			font-size: 24px;
-			text-transform: uppercase;
-		}
+    .detail {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
 
-		.input-group {
-			display: flex;
+    i.fa {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      margin-right: .75rem;
+      font-size: 16px;
+      border-radius: 20px;
+      border: 1px solid $mint;
+      background-color: $white;
+      color: $mint;
+    }
+  }
 
-			input, button {
-				appearance: none;
-				padding: .75rem 1rem;
-				border: none;
-				outline: none;
-				border-radius: 25px;
-			}
+  .newsletter {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    margin-bottom: 4rem;
 
-			input {
-				width: 325px;
-				border-top-right-radius: 0;
-				border-bottom-right-radius: 0;
-			}
+    h3 {
+      margin-bottom: 1rem;
+      font-family: map-get($fonts-poppins, 'medium');
+      font-size: 24px;
+      text-transform: uppercase;
+    }
 
-			button {
-				width: 125px;
-				border-top-left-radius: 0;
-				border-bottom-left-radius: 0;
-				background-color: $mint;
-				color: $white;
-			}
-		}
-	}
+    .input-group {
+      display: flex;
+      width: 90%;
 
-	.social-medias {
-		display: flex;
-		justify-content: center;
-		margin-bottom: 1rem;
+      @include breakpoint-up('md') {
+        width: 500px;
+      }
 
-		i.fa {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			width: 36px;
-			height: 36px;
-			margin-right: 1rem;
-			font-size: 15px;
-			border-radius: 18px;
-			background-color: $white;
-			color: $mint;
-			&:last-child { margin-right: 0 }
-		}
-	}
+      input, button {
+        appearance: none;
+        padding: .75rem 1rem;
+        border: none;
+        outline: none;
+        border-radius: 25px;
+      }
 
-	.copyright {
-		text-align: center;
-		margin-bottom: 1rem;
-	}
+      input {
+        width: 70%;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+
+      button {
+        width: 30%;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        background-color: $mint;
+        color: $white;
+        cursor: pointer;
+
+        &:hover { background-color: darken($mint, 10%) }
+      }
+    }
+  }
+
+  .social-medias {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+
+    i.fa {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      margin-right: 1rem;
+      font-size: 15px;
+      border-radius: 18px;
+      background-color: $white;
+      color: $mint;
+      cursor: pointer;
+      transition: .3s ease;
+      
+      &:last-child { margin-right: 0 }
+
+      &:hover {
+        background-color: $mint;
+        color: $white;
+      }
+    }
+  }
+
+  .copyright {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
 }

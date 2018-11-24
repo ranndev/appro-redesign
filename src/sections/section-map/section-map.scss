@@ -1,18 +1,20 @@
 section-map {
-	@extend %section-container-component;
-	position: relative;
-	height: 80vh;
-	border-top: 1px solid rgba($black, .2);
-	border-bottom: 1px solid rgba($black, .2);
+  background-color: $off-white;
 
-	.map-marker-container {
-		position: absolute;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		top: 0;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}	
+  @extend %section-container-component;
+  position: relative;
+  height: 80vh;
+  border-top: 1px solid rgba($black, .2);
+  border-bottom: 1px solid rgba($black, .2);
+
+  .map-marker-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  } 
 }
