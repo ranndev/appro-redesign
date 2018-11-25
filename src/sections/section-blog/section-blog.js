@@ -17,8 +17,6 @@ class Controller {
         datePublished: new Date(),
       }));
     }
-
-    console.log(this.blogs);
   }
 }
 
