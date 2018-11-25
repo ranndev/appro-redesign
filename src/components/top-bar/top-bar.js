@@ -1,12 +1,12 @@
 import template from './top-bar.html';
 
 class Controller {
-  constructor($element, NavigationStore) {
+  constructor($scope, $element, ScrollSpy) {
+    this.spy = ScrollSpy
     this.collapsed = true;
-    this.locations = NavigationStore.getState().locations;
 
-    NavigationStore.getStateStream('TOGGLE_FLOAT_HEADER', ({isFloatHeader}) => {
-      isFloatHeader ? $element.addClass('float') : $element.removeClass('float');
+    $scope.$watch('topBar.spy.scrollPosition', (position) => {
+      position > 30 ? $element.addClass('float') : $element.removeClass('float');
     });
   }
 }

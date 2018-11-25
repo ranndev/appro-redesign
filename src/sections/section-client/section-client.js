@@ -30,7 +30,6 @@ class Controller {
     });
 
     this.previous();
-    console.log(this.clients);
   }
 
   previous() {

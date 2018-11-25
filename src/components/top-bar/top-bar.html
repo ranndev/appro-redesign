@@ -6,8 +6,9 @@
 	</button>
 
 	<ul>
-		<li ng-repeat="location in topBar.locations">
-			<a href="{{location.hash}}">{{location.title}}</a>
+		<li ng-repeat="location in topBar.spy.locations"
+      ng-class="{'active': topBar.spy.currentSection.location === location}">
+			<a href="#{{location.name}}" ng-click="topBar.spy.scrollTo(location)">{{location.title}}</a>
 		</li>
 	</ul>
 </nav>

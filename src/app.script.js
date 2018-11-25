@@ -1,17 +1,17 @@
 import './app.vendor';
 
-import './models/_index';
-import './stores/_index';
+import './services/_index';
+import './configs/_index';
 import './components/_index';
 import './sections/_index';
 
 angular.module('app', [
-	'app.models',
-	'app.stores',
+  'app.services',
+  'app.configs',
 	'app.components',
 	'app.sections',
-]).run((NavigationStore, $timeout) => {
-	window.onload = () => {
+]).run(function ($timeout) {
+  window.onload = () => {
     $timeout(() => {
       document.querySelector('loader').classList.add('hidden');
       document.body.classList.remove('not-loaded');
