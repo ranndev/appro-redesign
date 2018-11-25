@@ -8,7 +8,7 @@ top-bar {
   align-items: stretch;
   justify-content: center;
   width: 100%;
-  padding: 1rem;
+  padding: 1rem 0;
   background-image: $gradient-mint;
   box-shadow: 0 0 0 rgba($black, .2);
   transition: all .15s ease-in-out;
@@ -73,14 +73,24 @@ top-bar {
   }
 
   .brand {
-    font-family: map-get($fonts-poppins, 'bold');
+    position: relative;
+    bottom: 2px;
+    margin-left: 1rem;
     margin-right: auto;
-    font-size: 28px;
+    font-family: map-get($fonts-poppins, 'bold');
+    font-size: 20px;
+
+    @include breakpoint-up('md') {
+      bottom: 4px;
+      margin-left: 0;
+      font-size: 28px;
+    }
   }
 
   ul {
     flex-direction: column;
     display: flex;
+    align-self: stretch;
     align-items: flex-start;
     width: 100%;
     padding: 0;
@@ -91,19 +101,34 @@ top-bar {
 
     li {
       width: 100%;
-      margin-bottom: 1rem;
+      padding: .5rem 1.5rem;
+      box-shadow: inset 0 0 lighten($mint, 10%);
+      will-change: box-shadow;
+      transition: box-shadow .6s ease;
+
+      a { color: rgba($white, .75) }
+
+      &:hover a { color: $white }
+
+      &.active {
+        box-shadow: inset .5rem 0 rgba($white, .6);
+
+        a { color: $white }
+      }
     }
 
     @include breakpoint-up('md') {
-    flex-direction: row;
-    align-items: center;
-    width: auto;
-    padding-top: 0;
+      flex-direction: row;
+      align-items: stretch;
+      width: auto;
+      padding-top: 0;
 
       li {
+        display: flex;
+        align-items: center;
         width: auto;
-        margin-bottom: 0;
-        margin-left: 1rem;
+        padding: 0 .5rem;
+        &.active { box-shadow: inset 0 -.25rem rgba($white, .3) }
       }
     }
   }
